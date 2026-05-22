@@ -91,27 +91,17 @@
     margin: 0 0 28px 0;
   }
 
-  .works {
-    list-style: none;
-    margin: 0 0 40px 0;
-    padding: 0;
-    border-top: 1px solid currentColor;
-  }
-  .works li {
-    display: grid;
-    grid-template-columns: 56px 1fr auto;
-    gap: 20px;
-    align-items: baseline;
-    padding: 18px 0;
-    border-bottom: 1px solid currentColor;
+  .declined { margin: 0 0 32px 0; }
+  .declined p {
     font-family: 'Inter', sans-serif;
-    font-size: 15px;
+    font-size: 18px;
+    line-height: 1.55;
     font-weight: 400;
-    letter-spacing: 0.01em;
+    letter-spacing: -0.005em;
+    margin: 0 0 14px 0;
   }
-  .works li .idx { font-variant-numeric: tabular-nums; opacity: 0.55; }
-  .works li .name { font-weight: 500; letter-spacing: -0.01em; }
-  .works li .meta { font-size: 13px; opacity: 0.6; font-variant-numeric: tabular-nums; }
+  .declined p:last-child { margin-bottom: 0; }
+  .declined .strike { text-decoration: line-through; opacity: 0.4; }
 
   .quote {
     font-family: 'Inter', sans-serif;
@@ -130,6 +120,30 @@
     opacity: 0.55;
     margin: 0 0 40px 0;
   }
+
+  .diagram {
+    width: 100%;
+    height: auto;
+    margin: 0 0 24px 0;
+    display: block;
+    overflow: visible;
+  }
+  .diagram text {
+    font-family: 'Inter', sans-serif;
+    fill: currentColor;
+  }
+  .diagram .box { fill: none; stroke: currentColor; stroke-width: 1; }
+  .diagram .axis { stroke: currentColor; stroke-width: 1; fill: none; }
+  .diagram .curve { stroke: currentColor; stroke-width: 1.5; fill: none; }
+  .diagram .dot-filled { fill: currentColor; }
+  .diagram .dot-open { fill: none; stroke: currentColor; stroke-width: 1; }
+  .diagram .tick { stroke: currentColor; stroke-width: 1; opacity: 0.4; }
+  .diagram .arrow { stroke: currentColor; stroke-width: 1; fill: none; }
+  .diagram .arrow-head { fill: currentColor; }
+  .diagram .label { font-size: 12px; font-weight: 500; letter-spacing: 0.02em; }
+  .diagram .label-faint { font-size: 11px; opacity: 0.55; letter-spacing: 0.08em; text-transform: uppercase; }
+  .diagram .label-stack { font-size: 13px; font-weight: 500; letter-spacing: 0.02em; }
+  .diagram .label-sub { font-size: 11px; opacity: 0.6; letter-spacing: 0.04em; }
 
   .next-btn {
     font-family: 'Inter', sans-serif;
@@ -178,25 +192,96 @@
       </section>
 
       <section id="view-3" class="hidden">
-        <p class="eyebrow">selected field notes · 2021 — 2026</p>
-        <ul class="works">
-          <li><span class="idx">01</span><span class="name">ledger</span><span class="meta">systems · ongoing</span></li>
-          <li><span class="idx">02</span><span class="name">atlas</span><span class="meta">infra · 2025</span></li>
-          <li><span class="idx">03</span><span class="name">orchid</span><span class="meta">web · 2024</span></li>
-          <li><span class="idx">04</span><span class="name">sigma</span><span class="meta">systems · 2024</span></li>
-          <li><span class="idx">05</span><span class="name">north</span><span class="meta">web · 2023</span></li>
-          <li><span class="idx">06</span><span class="name">ember</span><span class="meta">under nda</span></li>
-        </ul>
+        <p class="eyebrow">said no to, last twelve months</p>
+        <div class="declined">
+          <p>a founder who wanted "a figma plugin, but live"</p>
+          <p>a fund asking for "a tasteful crypto dashboard"</p>
+          <p>three rebrands. we don't do logos.</p>
+          <p>someone who couldn't answer "why us"</p>
+          <p>the guy who emails in all caps</p>
+          <p class="strike">a friend's friend, "small thing, two weeks"</p>
+        </div>
+        <p class="caption">two slots open. ping us in q3 maybe.</p>
         <button class="next-btn next-step" data-from="view-3" data-to="view-4">next</button>
       </section>
 
       <section id="view-4" class="hidden">
-        <p class="quote">"by referral. mostly. ten clients a year, sometimes twelve."</p>
-        <p class="quote-cite">internal note · undated</p>
+        <p class="eyebrow">drawn so many times we keep a stencil</p>
+        <svg class="diagram" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <text x="0" y="14" class="label-faint">fig. 01</text>
+
+          <rect class="box" x="80" y="34" width="440" height="56"/>
+          <text x="100" y="60" class="label-stack">the surface</text>
+          <text x="100" y="78" class="label-sub">what people see</text>
+
+          <line class="arrow" x1="300" y1="90" x2="300" y2="118"/>
+          <polygon class="arrow-head" points="300,124 295,114 305,114"/>
+
+          <rect class="box" x="80" y="124" width="440" height="56"/>
+          <text x="100" y="150" class="label-stack">the wiring</text>
+          <text x="100" y="168" class="label-sub">where most projects quietly die</text>
+
+          <line class="arrow" x1="300" y1="180" x2="300" y2="208"/>
+          <polygon class="arrow-head" points="300,214 295,204 305,204"/>
+
+          <rect class="box" x="80" y="214" width="440" height="72"/>
+          <text x="100" y="238" class="label-stack">the bones</text>
+          <line x1="90" y1="248" x2="510" y2="248" class="tick" stroke-dasharray="2 4"/>
+          <text x="160" y="270" text-anchor="middle" class="label-sub">data</text>
+          <text x="300" y="270" text-anchor="middle" class="label-sub">jobs</text>
+          <text x="440" y="270" text-anchor="middle" class="label-sub">the boring stuff</text>
+
+          <text x="540" y="156" class="label-sub" transform="rotate(8 540 156)">← this is where</text>
+          <text x="540" y="172" class="label-sub" transform="rotate(8 540 172)">the money goes</text>
+        </svg>
+        <p class="caption">we draw this on every kickoff. somebody always says "huh."</p>
         <button class="next-btn next-step" data-from="view-4" data-to="view-5">next</button>
       </section>
 
       <section id="view-5" class="hidden">
+        <p class="eyebrow">we plotted this once. it didn't go away.</p>
+        <svg class="diagram" viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <text x="0" y="14" class="label-faint">fig. 02</text>
+
+          <line class="axis" x1="70" y1="40" x2="70" y2="290"/>
+          <line class="axis" x1="70" y1="290" x2="560" y2="290"/>
+
+          <polygon class="arrow-head" points="70,32 66,42 74,42"/>
+          <polygon class="arrow-head" points="568,290 558,286 558,294"/>
+
+          <text x="70" y="24" text-anchor="middle" class="label-sub">how good</text>
+          <text x="560" y="308" text-anchor="end" class="label-sub">how much</text>
+
+          <line class="tick" x1="66" y1="100" x2="74" y2="100"/>
+          <line class="tick" x1="66" y1="180" x2="74" y2="180"/>
+          <line class="tick" x1="66" y1="240" x2="74" y2="240"/>
+          <line class="tick" x1="200" y1="286" x2="200" y2="294"/>
+          <line class="tick" x1="350" y1="286" x2="350" y2="294"/>
+          <line class="tick" x1="500" y1="286" x2="500" y2="294"/>
+
+          <path class="curve" d="M 90 270 C 200 230, 280 90, 540 60"/>
+
+          <circle class="dot-filled" cx="220" cy="155" r="4"/>
+          <text x="232" y="150" class="label">us</text>
+          <text x="232" y="166" class="label-sub">we live up here</text>
+
+          <circle class="dot-open" cx="360" cy="240" r="4"/>
+          <text x="372" y="244" class="label-sub">most shops, honestly</text>
+
+          <text x="430" y="100" class="label-sub" transform="rotate(-6 430 100)">↖ diminishing returns</text>
+          <text x="430" y="116" class="label-sub" transform="rotate(-6 430 116)">get expensive fast</text>
+        </svg>
+        <p class="caption">the curve flattens. we charge for the part above it. that's the whole pitch.</p>
+        <button class="next-btn next-step" data-from="view-5" data-to="view-6">next</button>
+      </section>
+
+      <section id="view-6" class="hidden">
+        <p class="quote">"by referral. mostly. ten clients a year, sometimes twelve."</p>
+        <p class="quote-cite">internal note · undated</p>
+        <button class="next-btn next-step" data-from="view-6" data-to="view-7">next</button>
+      </section>
+
+      <section id="view-7" class="hidden">
         <h1 class="final">hebrew technologies</h1>
       </section>
     </div>
