@@ -6,111 +6,129 @@
 <title>hebrew</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { height: 100%; }
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: #ffffff;
-    color: #000000;
+    color: #0a0a0a;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  body.dark { background: #0a0a0a; color: #ffffff; }
+
+  .screen {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    transition: background 0.3s ease, color 0.3s ease;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    padding: 48px 24px;
   }
-  body.dark {
-    background: #000000;
-    color: #ffffff;
+  .container {
+    width: 100%;
+    max-width: 600px;
+    text-align: left;
   }
-  .stage {
-    text-align: center;
-    padding: 24px;
-    max-width: 720px;
-  }
-  .title {
+
+  .headline {
     font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: clamp(28px, 5vw, 48px);
-    letter-spacing: -0.02em;
+    font-size: 64px;
+    font-weight: 700;
     line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 40px 0;
   }
-  .subtitle {
-    margin-top: 16px;
+
+  .sub-link {
     font-family: 'Inter', sans-serif;
+    font-size: 16px;
     font-weight: 400;
-    font-size: clamp(14px, 1.6vw, 16px);
+    letter-spacing: 0.02em;
+    line-height: normal;
+    padding: 4px 0;
+    color: inherit;
+    background: transparent;
+    border: 0;
     text-decoration: underline;
     text-underline-offset: 4px;
     cursor: pointer;
     display: inline-block;
   }
-  .subtitle:hover { opacity: 0.75; }
+  .sub-link:hover { opacity: 0.75; }
+
   .body-text {
     font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: clamp(18px, 2.4vw, 24px);
-    line-height: 1.4;
-    letter-spacing: -0.01em;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 40px 0;
   }
+
   .next-btn {
-    margin-top: 28px;
     font-family: 'Inter', sans-serif;
+    font-size: 16px;
     font-weight: 500;
-    font-size: 15px;
+    letter-spacing: 0.02em;
     padding: 10px 22px;
     background: transparent;
     color: inherit;
-    border: 1px solid #000000;
+    border: 1px solid currentColor;
     border-radius: 0;
     cursor: pointer;
     transition: background 0.15s ease, color 0.15s ease;
   }
-  .next-btn:hover { background: #000000; color: #ffffff; }
+  .next-btn:hover { background: #0a0a0a; color: #ffffff; }
+  body.dark .next-btn:hover { background: #ffffff; color: #0a0a0a; }
+
   .final {
     font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: clamp(32px, 6vw, 64px);
-    letter-spacing: -0.03em;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     text-transform: lowercase;
+    margin: 0;
   }
+
   .hidden { display: none; }
+
+  @media (max-width: 640px) {
+    .headline, .body-text, .final { font-size: 40px; }
+  }
 </style>
 </head>
 <body>
-  <main class="stage" id="stage">
-    <section id="view-1">
-      <h1 class="title" lang="he" dir="rtl">עברית whats this?</h1>
-      <a class="subtitle" id="findOut">Let's find out</a>
-    </section>
+  <main class="screen">
+    <div class="container">
+      <section id="view-1">
+        <h1 class="headline" lang="he" dir="rtl">עברית whats this?</h1>
+        <button class="sub-link" id="findOut">Let's find out.</button>
+      </section>
 
-    <section id="view-2" class="hidden">
-      <p class="body-text">inter family we need to figure out but yeah we do whatever we promise</p>
-      <button class="next-btn" id="nextBtn">Next</button>
-    </section>
+      <section id="view-2" class="hidden">
+        <p class="body-text">inter family we need to figure out but yeah we do whatever we promise</p>
+        <button class="next-btn" id="nextBtn">Next</button>
+      </section>
 
-    <section id="view-3" class="hidden">
-      <h1 class="final">hebrew technologies</h1>
-    </section>
+      <section id="view-3" class="hidden">
+        <h1 class="final">hebrew technologies</h1>
+      </section>
+    </div>
   </main>
 
 <script>
   const v1 = document.getElementById('view-1');
   const v2 = document.getElementById('view-2');
   const v3 = document.getElementById('view-3');
-  const findOut = document.getElementById('findOut');
-  const nextBtn = document.getElementById('nextBtn');
-
-  findOut.addEventListener('click', function (e) {
-    e.preventDefault();
+  document.getElementById('findOut').addEventListener('click', function () {
     v1.classList.add('hidden');
     v2.classList.remove('hidden');
   });
-
-  nextBtn.addEventListener('click', function () {
+  document.getElementById('nextBtn').addEventListener('click', function () {
     v2.classList.add('hidden');
     v3.classList.remove('hidden');
     document.body.classList.add('dark');
