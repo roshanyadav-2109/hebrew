@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>hebrew</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #ffffff;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body.dark {
+    background: #000000;
+    color: #ffffff;
+  }
+  .stage {
+    text-align: center;
+    padding: 24px;
+    max-width: 720px;
+  }
+  .title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: clamp(28px, 5vw, 48px);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .subtitle {
+    margin-top: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: clamp(14px, 1.6vw, 16px);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
+    display: inline-block;
+  }
+  .subtitle:hover { opacity: 0.75; }
+  .body-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: clamp(18px, 2.4vw, 24px);
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+  .next-btn {
+    margin-top: 28px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 10px 22px;
+    background: transparent;
+    color: inherit;
+    border: 1px solid #000000;
+    border-radius: 0;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .next-btn:hover { background: #000000; color: #ffffff; }
+  .final {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: clamp(32px, 6vw, 64px);
+    letter-spacing: -0.03em;
+    text-transform: lowercase;
+  }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+  <main class="stage" id="stage">
+    <section id="view-1">
+      <h1 class="title" lang="he" dir="rtl">עברית whats this?</h1>
+      <a class="subtitle" id="findOut">Let's find out</a>
+    </section>
+
+    <section id="view-2" class="hidden">
+      <p class="body-text">inter family we need to figure out but yeah we do whatever we promise</p>
+      <button class="next-btn" id="nextBtn">Next</button>
+    </section>
+
+    <section id="view-3" class="hidden">
+      <h1 class="final">hebrew technologies</h1>
+    </section>
+  </main>
+
+<script>
+  const v1 = document.getElementById('view-1');
+  const v2 = document.getElementById('view-2');
+  const v3 = document.getElementById('view-3');
+  const findOut = document.getElementById('findOut');
+  const nextBtn = document.getElementById('nextBtn');
+
+  findOut.addEventListener('click', function (e) {
+    e.preventDefault();
+    v1.classList.add('hidden');
+    v2.classList.remove('hidden');
+  });
+
+  nextBtn.addEventListener('click', function () {
+    v2.classList.add('hidden');
+    v3.classList.remove('hidden');
+    document.body.classList.add('dark');
+  });
+</script>
+</body>
+</html>
