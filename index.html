@@ -171,10 +171,69 @@
     margin: 0;
   }
 
+  /* the people we build for — sideways marquee */
+  .marquee {
+    width: 100%;
+    overflow: hidden;
+    margin: 0 0 28px 0;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+  }
+  .marquee__track {
+    display: flex;
+    width: max-content;
+    animation: scroll-x 26s linear infinite;
+  }
+  .marquee:hover .marquee__track { animation-play-state: paused; }
+  .marquee__group {
+    display: flex;
+    gap: 22px;
+    padding-right: 22px;
+    flex: 0 0 auto;
+  }
+  .plate {
+    flex: 0 0 auto;
+    height: 92px;
+    min-width: 156px;
+    padding: 0 26px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .plate img {
+    max-height: 54px;
+    max-width: 152px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+  /* KaroStartup — cropped a little from top and bottom */
+  .plate--crop { padding: 0; overflow: hidden; }
+  .plate--crop img {
+    width: 176px;
+    height: 64px;
+    max-height: none;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+  }
+  @keyframes scroll-x {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__track { animation: none; }
+    .marquee { overflow-x: auto; }
+  }
+
   .hidden { display: none; }
 
   @media (max-width: 640px) {
     .headline, .body-text, .final { font-size: 40px; }
+    .plate { height: 72px; min-width: 124px; padding: 0 18px; }
+    .plate img { max-height: 40px; max-width: 118px; }
+    .plate--crop img { width: 140px; height: 50px; }
   }
 </style>
 </head>
@@ -280,6 +339,30 @@
       </section>
 
       <section id="view-7" class="hidden">
+        <p class="eyebrow">the people we build for</p>
+        <div class="marquee" aria-label="the people we build for">
+          <div class="marquee__track">
+            <div class="marquee__group">
+              <div class="plate"><img src="logos/gujarat.svg" alt="Government of Gujarat" /></div>
+              <div class="plate"><img src="logos/maharashtra.png" alt="Government of Maharashtra" /></div>
+              <div class="plate"><img src="logos/aryasamaj.png" alt="Arya Samaj" /></div>
+              <div class="plate"><img src="logos/logo4.png" alt="PanIIT Alumni India" /></div>
+              <div class="plate plate--crop"><img src="logos/pitchbook.png" alt="KaroStartup" /></div>
+            </div>
+            <div class="marquee__group" aria-hidden="true">
+              <div class="plate"><img src="logos/gujarat.svg" alt="" /></div>
+              <div class="plate"><img src="logos/maharashtra.png" alt="" /></div>
+              <div class="plate"><img src="logos/aryasamaj.png" alt="" /></div>
+              <div class="plate"><img src="logos/logo4.png" alt="" /></div>
+              <div class="plate plate--crop"><img src="logos/pitchbook.png" alt="" /></div>
+            </div>
+          </div>
+        </div>
+        <p class="caption">governments. institutions. founders who can't afford to look unserious.</p>
+        <button class="next-btn next-step" data-from="view-7" data-to="view-8">next</button>
+      </section>
+
+      <section id="view-8" class="hidden">
         <h1 class="final">hebrew technologies</h1>
       </section>
     </div>
@@ -299,6 +382,9 @@
       to.classList.remove('hidden');
       if (btn.dataset.to === 'view-5') {
         document.body.classList.add('dark');
+      }
+      if (btn.dataset.to === 'view-7') {
+        document.body.classList.remove('dark');
       }
     });
   });
